@@ -1,1 +1,54 @@
+# Core Framework
+Flask==2.3.3
+Werkzeug==2.3.7
 
+# Production Server
+gunicorn==21.2.0
+
+# Database
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.21
+psycopg2-binary==2.9.7  # For PostgreSQL in production
+alembic==1.12.0
+Flask-Migrate==4.0.5
+
+# Forms and Validation
+Flask-WTF==1.1.1
+WTForms==3.0.1
+email-validator==2.0.0
+
+# Authentication and Security
+Flask-Login==0.6.2
+Flask-Bcrypt==1.0.1
+PyJWT==2.8.0
+itsdangerous==2.1.2
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Date/Time Handling
+pytz==2023.3
+
+# Testing
+pytest==7.4.2
+pytest-flask==1.2.0
+
+# Utilities
+Pillow==10.0.1  # For image handling
+email-validator==2.0.0
+phonenumbers==8.13.20  # For phone number validation
+Flask-Mail==0.9.1  # For email notifications
+bleach==6.0.0  # For sanitizing user input
+
+# API
+Flask-RESTful==0.3.10
+marshmallow==3.20.1
+
+# CSS/Frontend (if using Flask assets)
+Flask-Assets==2.1.0
+
+# Internationalization (if needed)
+Flask-Babel==3.1.0
+
+# Monitoring and Performance (optional but recommended for production)
+Sentry-SDK==1.31.0
