@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOPE - Helping Others to Eat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#4CAF50"/>
+                    <path d="M30,50 Q50,20 70,50" stroke="white" stroke-width="5" fill="none"/>
+                    <circle cx="50" cy="55" r="15" fill="white"/>
+                </svg>
+                <h1 class="logo-text">HOPE</h1>
+            </div>
+            <p class="tagline">Helping Others to Eat</p>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h2>Connect Food Donors with Those in Need</h2>
+                <p>Our platform connects individuals who want to donate food with NGOs who distribute it to those who need it most.</p>
+                <div class="buttons">
+                    <a href="{{ url_for('login') }}" class="btn primary">Login</a>
+                    <a href="{{ url_for('signup') }}" class="btn secondary">Sign Up</a>
+                </div>
+            </section>
+            
+            <section class="features">
+                <div class="feature">
+                    <div class="feature-icon">🍲</div>
+                    <h3>Donate Food</h3>
+                    <p>Share your excess food with those who need it most</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Quick Collection</h3>
+                    <p>NGO volunteers will collect donations quickly</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Make an Impact</h3>
+                    <p>Help reduce hunger and food waste in your community</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 HOPE - Helping Others to Eat. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
