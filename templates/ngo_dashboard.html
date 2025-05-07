@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Dashboard - HOPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}">
+                    <svg class="logo" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#4CAF50"/>
+                        <path d="M30,50 Q50,20 70,50" stroke="white" stroke-width="5" fill="none"/>
+                        <circle cx="50" cy="55" r="15" fill="white"/>
+                    </svg>
+                    <h1 class="logo-text">HOPE</h1>
+                </a>
+            </div>
+            <div class="user-menu">
+                <span>Welcome, {{ name }}!</span>
+                <a href="{{ url_for('logout') }}" class="btn small">Logout</a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="dashboard">
+                <h2>Available Donations</h2>
+                
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for message in messages %}
+                                <div class="flash-message">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                {% if donations %}
+                    <div class="donations-list">
+                        {% for donation in donations %}
+                            <div class="donation-card">
+                                <div class="donation-details">
+                                    <h3>{{ donation[2] }}</h3>
+                                    <p><strong>Donor:</strong> {{ donation[1] }}</p>
+                                    <p><strong>Quantity:</strong> {{ donation[3] }}</p>
+                                    <p><strong>Location:</strong> {{ donation[4] }}</p>
+                                    <p><strong>Contact:</strong> {{ donation[5] }}</p>
+                                </div>
+                                <a href="{{ url_for('accept_donation', donation_id=donation[0]) }}" class="btn primary">Accept & Collect</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-donations">
+                        <p>No pending donations available at the moment.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 HOPE - Helping Others to Eat. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

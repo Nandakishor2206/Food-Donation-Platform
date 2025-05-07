@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food - HOPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}">
+                    <svg class="logo" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#4CAF50"/>
+                        <path d="M30,50 Q50,20 70,50" stroke="white" stroke-width="5" fill="none"/>
+                        <circle cx="50" cy="55" r="15" fill="white"/>
+                    </svg>
+                    <h1 class="logo-text">HOPE</h1>
+                </a>
+            </div>
+            <div class="user-menu">
+                <a href="{{ url_for('user_dashboard') }}" class="btn small">Dashboard</a>
+                <a href="{{ url_for('logout') }}" class="btn small">Logout</a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="form-container">
+                <h2>Donate Food</h2>
+                
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for message in messages %}
+                                <div class="flash-message">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                <form action="{{ url_for('donate_food') }}" method="post" class="donation-form">
+                    <div class="form-group">
+                        <label for="food_name">Food Name</label>
+                        <input type="text" id="food_name" name="food_name" required placeholder="E.g., Cooked Rice, Bread, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="quantity" name="quantity" required placeholder="E.g., 2kg, 5 packets, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Pickup Location</label>
+                        <input type="text" id="location" name="location" required placeholder="Complete address for pickup">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobile">Contact Number</label>
+                        <input type="tel" id="mobile" name="mobile" required placeholder="Your mobile number">
+                    </div>
+                    
+                    <button type="submit" class="btn primary full-width donate-btn">Donate Food</button>
+                </form>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 HOPE - Helping Others to Eat. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HOPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}">
+                    <svg class="logo" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#4CAF50"/>
+                        <path d="M30,50 Q50,20 70,50" stroke="white" stroke-width="5" fill="none"/>
+                        <circle cx="50" cy="55" r="15" fill="white"/>
+                    </svg>
+                    <h1 class="logo-text">HOPE</h1>
+                </a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="auth-container">
+                <h2>Create Your Account</h2>
+                
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for message in messages %}
+                                <div class="flash-message">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                <form action="{{ url_for('signup') }}" method="post" class="auth-form">
+                    <div class="form-group">
+                        <div class="user-toggle">
+                            <input type="radio" id="user" name="user_type" value="user" checked>
+                            <label for="user">Individual</label>
+                            
+                            <input type="radio" id="ngo" name="user_type" value="ngo">
+                            <label for="ngo">NGO</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name / Organization Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn primary full-width">Sign Up</button>
+                </form>
+                
+                <p class="auth-link">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 HOPE - Helping Others to Eat. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
